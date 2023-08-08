@@ -1,0 +1,28 @@
+problem -5 Object Sorting
+Write a Javascript program that takes an array of objects and arranges them by a specified field
+in an ascending order of the value of that field and returns the sorted object array.
+
+ans:
+let people = [
+  { name: 'Alice', age: 21 },
+  { name: 'Alice', age: 24 },
+  { name: 'Max', age: 21 },
+  { name: 'June', age: 23 },
+  { name: 'July', age: 24 },
+];
+
+function groupBy(arr) {
+  let sortedArr = arr.slice().sort((a, b) => a.age - b.age);
+  let grouped = {};
+
+  for (let person of sortedArr) {
+    if (!grouped[person.age]) {
+      grouped[person.age] = [];
+    }
+    grouped[person.age].push(person);
+  }
+
+  return grouped;
+}
+
+console.log(groupBy(people));
